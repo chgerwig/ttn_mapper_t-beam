@@ -12,7 +12,7 @@ Send your GPS-Location over [TTS](https://www.thethingsnetwork.org/). The Locati
 
 ## Hardware
 
-I'm using the TTGO-T-beam v1.1(with the axp power management chip onboard)
+I'm using the TTGO-T-beam v1.0 - so I changed the GPS pins because they are different to v.1.1
 
 ![T-Beam v1.1](img/ttgo-t-beam-v1.1.jpg "T-Beam v1.1")
 
