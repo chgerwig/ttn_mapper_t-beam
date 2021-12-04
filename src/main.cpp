@@ -1,4 +1,6 @@
 /*
+adapted GPS pins for TTGO T-Beam v1.0
+
 good sources:
 https://github.com/JackGruber/ESP32-LMIC-DeepSleep-example
 https://randomnerdtutorials.com/esp32-deep-sleep-arduino-ide-wake-up-sources/
