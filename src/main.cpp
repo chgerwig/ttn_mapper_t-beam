@@ -9,7 +9,7 @@ https://randomnerdtutorials.com/esp32-deep-sleep-arduino-ide-wake-up-sources/
 
 #include "gps.hpp"
 #include "lorawan.hpp"
-#include "power.hpp"
+//#include "power.hpp"
 
 unsigned int TX_INTERVAL = 30;
 
@@ -18,7 +18,7 @@ unsigned int TX_INTERVAL = 30;
 
 void sendLocation()
 {
-  startup_axp();
+  //startup_axp();
   setup_gps();
   startup_lorawan();
 
@@ -29,7 +29,7 @@ void sendLocation()
   {
     gps_loop();
     lorawan_loop();
-    axp_loop();
+    //axp_loop();
   }
   if (gps_valid())
     Serial.println("got GPS");
@@ -41,7 +41,7 @@ void sendLocation()
   uint8_t txBuffer[14];
   uint8_t bufferSize = 0;
   uint8_t port = 1;
-  bufferSize = vbatt_bin(txBuffer, bufferSize); //get battery level
+  //bufferSize = vbatt_bin(txBuffer, bufferSize); //get battery level
   if (gps_valid())
   {
     if (gps_geo())
@@ -71,7 +71,7 @@ void sendLocation()
   {
     gps_loop();
     lorawan_loop();
-    axp_loop();
+    //axp_loop();
   }
 
   //enter deep sleep
@@ -79,7 +79,7 @@ void sendLocation()
   Serial.print(TX_INTERVAL);
   Serial.println(F("sec"));
   lorawan_sleep(TX_INTERVAL * 1000);
-  axp_sleep();
+  //axp_sleep();
   Serial.flush();
   esp_sleep_enable_timer_wakeup(TX_INTERVAL * 1000000);
 }
@@ -100,21 +100,21 @@ void setup()
   else if (wakeup_reason == ESP_SLEEP_WAKEUP_EXT0)
   {
     Serial.println(F("Wakeup caused by axp"));
-    startup_axp();
-    axp_interrupt();
-    axp_loop();
+    //startup_axp();
+    //axp_interrupt();
+    //axp_loop();
     Serial.println(F("going to sleep again"));
     Serial.print(F("entering deep sleep for "));
     Serial.print(TX_INTERVAL);
     Serial.println(F("sec"));
     esp_sleep_enable_timer_wakeup(TX_INTERVAL * 1000000);
     Serial.flush();
-    axp_sleep();
+    //axp_sleep();
   }
   else
   {
     Serial.println(F("Wakeup caused by reset"));
-    setup_axp();
+    //setup_axp();
     sendLocation();
   }
 
